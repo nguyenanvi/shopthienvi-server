@@ -318,6 +318,10 @@ app.listen(PORT, () => {
   console.log("EMAIL_PORT:", process.env.EMAIL_PORT);
   console.log("EMAIL_USER:", process.env.EMAIL_USER);
   console.log("EMAIL_TO:", process.env.EMAIL_TO);
+  console.log("JWT_SECRETE:", process.env.JWT_SECRET);
+  console.log("CLIENT_URI:", process.env.CLIENT_URI);
+  console.log("ADMIN_USERNAME:", process.env.ADMIN_USERNAME);
+  
 
   console.log("trusted origins:", trustedOrigins);
   console.log("Server is ready to accept requests.");
