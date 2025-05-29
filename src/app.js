@@ -17,6 +17,7 @@ const trustedOrigins = [
 
 const corsOptions = {
   origin: function (origin, callback) {
+    console.log("Origin request:", origin); // Debugging
     if (!origin || trustedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -304,4 +305,14 @@ app.get("/order/get", isAuthenticated, async (req, res) => {
 const PORT = process.env.SERVER_PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log("environment variables loaded:", process.env.NODE_ENV);
+  console.log("MONGO_URI:", process.env.MONGO_URI);
+  console.log("EMAIL_HOST:", process.env.EMAIL_HOST);
+  console.log("EMAIL_PORT:", process.env.EMAIL_PORT);
+  console.log("EMAIL_USER:", process.env.EMAIL_USER);
+  console.log("EMAIL_TO:", process.env.EMAIL_TO);
+
+  console.log("trusted origins:", trustedOrigins);
+  console.log("Server is ready to accept requests.");
+
 });
