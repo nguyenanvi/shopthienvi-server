@@ -1,0 +1,43 @@
+<style>
+  /* Basic styles for the email template */
+  html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    margin-top: 2rem;
+    color: #333;
+    text-align: center;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+  }
+
+  div {
+    margin-bottom: 10px;
+    color: #555;
+    margin-inline: 2rem
+  }
+</style>
+<h1>Có đơn hàng mới:</h1>
+<div style="text-align: center; margin: 0 !important;">Thời gian: {{timestamps}}</div>
+<hr>
+<div>Sản phẩm: {{productName}}</div>
+<div>Phân loại: {{specs}}</div>
+<div>Số lượng: {{quantity}}</div>
+<hr>
+<div>Từ: {{customerName}}</div>
+<div>Số điện thoại: {{customerPhone}}</div>
+<div>Email: {{email}}</div>
+<div>{{isUsingZalo}}</div>
+<div>Ghi chú: {{note}}</div>
+<hr>
+<div>Go to <a href="{{clientUri}}/admin.html" target="_blank">admin page</a></div>
+  

@@ -1,0 +1,164 @@
+<div class="container">
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      position: relative;
+      overflow: hidden;
+    }
+    tr:not(.table-header) {
+      cursor: pointer;
+    }
+    .delete-btn {
+      background: red;
+      color: white;
+      padding: 5px 10px;
+      border: none;
+      cursor: pointer;
+    }
+    .primary-btn {
+      background: blue;
+      color: white;
+      padding: 5px 10px;
+      border: none;
+      cursor: pointer;
+    }
+    .modal{
+      display: none;;
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .orderDetailModal {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .modal-content {
+        width: 90vw;
+        height: 80vh;
+      }
+      .infomation {
+        flex-direction: column;
+      }
+      .infomation div {
+        width: 100%;
+      }
+    }
+  </style>
+  <div class="orderDetailModal">
+    <div class="modal">
+      <div class="modal-content">
+        <style>
+          .modal-content{
+            width: 75vw; 
+            height: 50vh;
+
+            overflow-y: hidden;
+            background-color: white;
+            padding: 2rem;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+          }
+        </style>
+        <h2 style="height: 100%;">Chi tiết đơn hàng</h2>
+        <div class="infomation">
+          <style>
+            .infomation {
+              display: flex;
+              flex-direction: row;
+              &>*{
+                width: 50%;
+                box-sizing: border-box;
+              }
+            }
+            .infomation p {
+              margin: 0;
+            }
+            .infomation span {
+              font-weight: bold;
+            }
+          </style>
+          <div>
+            <p>ID: <span id="orderid">???</span></p>
+            <p>Tên KH: <span id="customerName">???</span></p>
+            <p>SĐT: <span id="customerPhone">???</span></p>
+            <p>Sản phẩm: <span id="productName">???</span></p>
+            <p>Phân loại: <span id="specs">???</span></p>
+            <p>Số lượng: <span id="quantity">???</span></p>
+          </div>
+          <div>
+            <p>Email: <span id="email">???</span></p>
+            <p>Zalo: <span id="zalo">???</span></p>
+            <p>Ghi chú: <span id="note">???</span></p>
+            <p>Thời gian: <span id="timestamps">???</span></p>
+            <p>Trạng thái: <span id="isRead">???</span></p>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="primary-btn" onclick="markAsRead()">Đánh dấu đã đọc</button>
+          <button class="delete-btn" onclick="deleteRow()">Xóa</button>
+          <button class="primary-btn" for="closeModal">Đóng</button>
+        </div>
+      </div>
+  </div>
+  <h2>Đơn hàng mới nhất:</h2>
+  <table id="orders-table">
+    <style>
+      .table-header {
+        background-color: #f2f2f2;
+        font-weight: bold;
+      }
+      .table-header th {
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      .table-header th:first-child {
+        width: 100px;
+      }
+      .table-header th:nth-child(2) {
+        width: 200px;
+      }
+    </style>
+   <!-- const orderSchema = new mongoose.Schema({
+      productName: { type: String, required: true },
+      quantity: { type: Number, required: true },
+      specs: String,
+      customerName: { type: String, required: true },
+      customerPhone: { type: String, required: true },
+      isUsingZalo: { type: Boolean, default: false },
+      email: { type: String, required: false },
+      note: String,
+      isRead: { type: Boolean, default: false }
+    }, { timestamps: true }); -->
+
+    <tr class="table-header">
+      <th>TG</th>
+      <th>Khách hàng</th>
+      <th>Sản phẩm</th>
+      <th>Cách LH</th>
+      <th>Trạng thái</th>
+      <th>Thao tác</th>
+    </tr>
+  </table>
+</div>
