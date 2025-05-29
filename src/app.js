@@ -69,7 +69,8 @@ const orderSchema = new mongoose.Schema(
 const Order = mongoose.model("Order", orderSchema);
 
 // Handle preflight requests for CORS
-app.options("*", cors(corsOptions));
+app.options(/.*/, cors(corsOptions));
+
 
 
 // 1. POST /login route
