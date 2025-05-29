@@ -11,8 +11,7 @@ require("dotenv").config().parsed;
 
 // Define the trusted origins
 const trustedOrigins = [
-  // "http://127.0.0.1:3000", 
-  "https://shopthienvi.web.app"
+  process.env.CLIENT_URI || "http://localhost:3000", 
 ];
 
 const corsOptions = {
@@ -313,15 +312,14 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log("environment variables loaded:", process.env.NODE_ENV);
-  console.log("MONGO_URI:", process.env.MONGO_URI);
+  console.log("MONGO_URI ", (process.env.MONGO_URI)? "loaded" : "not loaded");
   console.log("EMAIL_HOST:", process.env.EMAIL_HOST);
   console.log("EMAIL_PORT:", process.env.EMAIL_PORT);
   console.log("EMAIL_USER:", process.env.EMAIL_USER);
   console.log("EMAIL_TO:", process.env.EMAIL_TO);
-  console.log("JWT_SECRETE:", process.env.JWT_SECRET);
+  console.log("JWT_SECRET ", (process.env.JWT_SECRET)? "loaded" : "not loaded");
   console.log("CLIENT_URI:", process.env.CLIENT_URI);
   console.log("ADMIN_USERNAME:", process.env.ADMIN_USERNAME);
-  
 
   console.log("trusted origins:", trustedOrigins);
   console.log("Server is ready to accept requests.");
