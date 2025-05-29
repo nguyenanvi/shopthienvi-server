@@ -68,8 +68,12 @@ const orderSchema = new mongoose.Schema(
 
 const Order = mongoose.model("Order", orderSchema);
 
+app.options("/login", cors(corsOptions));
+
 // 1. POST /login route
 app.post("/login", (req, res) => {
+  console.log("Login request received:", req.body); // Debugging
+  
   const { username, password } = req.body;
 
   console.log("try to login: ", username, password);
